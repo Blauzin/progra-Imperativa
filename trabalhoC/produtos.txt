@@ -1,0 +1,11 @@
+10
+1 10.99 Smartphone
+2 29.99 Fones
+3 5.99 Caneta
+4 19.99 Teclado
+5 49.99 Monitor
+6 199.99 Notebook
+7 9.99 Mouse
+8 69.99 Impressora
+9 79.99 Headset
+10 14.99 HD-Externo

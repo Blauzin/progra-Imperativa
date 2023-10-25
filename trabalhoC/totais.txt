@@ -1,0 +1,21 @@
+Total geral de vendas: 3302.92
+
+Total vendido por produto:
+Produto 1: 197.82
+Produto 2: 509.83
+Produto 3: 185.69
+Produto 4: 199.90
+Produto 5: 99.98
+Produto 6: 999.95
+Produto 7: 39.96
+Produto 8: 629.91
+Produto 9: 319.96
+Produto 10: 119.92
+
+Total vendido por vendedor:
+Vendedor 1 (João): 510.78
+Vendedor 2 (Maria): 646.57
+Vendedor 3 (Pedro): 688.82
+Vendedor 4 (Ana): 246.87
+Vendedor 5 (Carlos): 1209.88
+  
