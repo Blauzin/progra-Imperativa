@@ -17,5 +17,6 @@ void liberarLista(Pessoa *cabeca);
 void adicionarPessoaInicio(Pessoa **cabeca, Pessoa *novaPessoa);
 int processarDados();
 void ordenarPorCPF(Pessoa **cabeca);
-
+void liberarMemoria(Pessoa *cabeca);
+int exportarDados();
 #endif // LISTA_H

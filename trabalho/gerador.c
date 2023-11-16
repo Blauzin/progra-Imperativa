@@ -50,16 +50,6 @@ void escreverDadosBinario(Pessoa *cabeca, const char *nomeArquivoBinario) {
   fclose(arquivo);
 }
 
-// Função para liberar a memória alocada pela lista encadeada.
-void liberarMemoria(Pessoa *cabeca) {
-  Pessoa *atual = cabeca;
-  while (atual != NULL) {
-    // Libera cada nó da lista e avança para o próximo.
-    Pessoa *prox = atual->prox;
-    free(atual);
-    atual = prox;
-  }
-}
 
 // Função principal para processar os dados.
 int processarDados(int argc, char *argv[]) {
