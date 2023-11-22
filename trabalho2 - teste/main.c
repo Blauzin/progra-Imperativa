@@ -6,10 +6,7 @@
 
 int main(int argc, char *argv[]) {
 
-   if (argc != 3) {
-    printf("Uso: %s <arquivo_entrada> <arquivo_bin>\n", argv[0]);
-    return 1;
-  }
+
 
   int resultado = processarDados(argc, argv);
 
@@ -17,7 +14,7 @@ int main(int argc, char *argv[]) {
     printf("Processamento concluído com sucesso.\n");
 
 
-    menuPrincipal();
+    menuPrincipal(argc, argv);
 
     //exportador 
     exportarDados(argc, argv);

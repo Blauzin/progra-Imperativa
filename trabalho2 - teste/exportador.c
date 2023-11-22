@@ -39,13 +39,13 @@ void escreverDadosTexto(Pessoa *cabeca, const char *nomeArquivoTexto) {
 }
 
 // Função principal para processar os dados.
-int exportarDados() {
+int exportarDados(int argc, char *argv[]) {
 
-    char nomeArquivo[100];
+    const char *nomeArquivoLeitura = argv[2];
+    const char *nomeArquivoEscrita = argv[3];
 
-    printf("Digite o nome do arquivo binrio para ler: ");
-    scanf("%s", nomeArquivo);
-    FILE *arquivoBinario = abrirArquivoBinario(nomeArquivo);
+   
+    FILE *arquivoBinario = abrirArquivoBinario(nomeArquivoLeitura);
     if (arquivoBinario == NULL) {
         return 1;
     }
@@ -53,11 +53,8 @@ int exportarDados() {
     Pessoa *cabeca = NULL;
     lerDadosBinario(arquivoBinario, &cabeca);
     fclose(arquivoBinario);
-
-    printf("Digite o nome do arquivo para salvar: ");
-      scanf("%s", nomeArquivo);
     
-    escreverDadosTexto(cabeca, nomeArquivo);
+    escreverDadosTexto(cabeca, nomeArquivoEscrita);
 
     printf("Dados exportados com sucesso para o arquivo de texto.\n");
     return 0;

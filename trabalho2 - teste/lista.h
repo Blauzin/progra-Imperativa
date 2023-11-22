@@ -15,7 +15,7 @@ Pessoa *criarPessoa(const char *nome, const char *cpf,
                     const char *dataNascimento);
 void liberarLista(Pessoa *cabeca);
 void adicionarPessoaInicio(Pessoa **cabeca, Pessoa *novaPessoa);
-int processarDados();
+int processarDados(int argc, char *argv[]);
 void ordenarPorCPF(Pessoa **cabeca);
 void liberarMemoria(Pessoa *cabeca);
 int exportarDados();

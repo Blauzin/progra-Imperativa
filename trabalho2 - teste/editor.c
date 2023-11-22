@@ -149,12 +149,18 @@ Pessoa *buscarPorCpf(Pessoa *cabeca, const char *cpf) {
 }
 
 // Menu principal do editor que permite interação com o usuário.
-void menuPrincipal() {
+void menuPrincipal(int argc, char *argv[]) {
+
+  const char *nomeArquivoLeitura = argv[2];
+  const char *nomeArquivoEscrita = argv[2];
+
+
   EditorData editorData;
   inicializarEditorData(&editorData);
 
+  lerArquivoBinario(&editorData, nomeArquivoLeitura);
+
   int opcao;
-  char nomeArquivo[100];
   char nome[100], cpf[15], dataNascimento[11];
 
   do {
@@ -174,15 +180,12 @@ void menuPrincipal() {
     switch (opcao) {
     case 1:
       // Opção para ler dados de um arquivo binário.
-      printf("Digite o nome do arquivo para ler: ");
-      scanf("%s", nomeArquivo);
-      lerArquivoBinario(&editorData, nomeArquivo);
+      printf("Deprecated");
       break;
     case 2:
       // Opção para salvar dados em um arquivo binário.
-      printf("Digite o nome do arquivo para salvar: ");
-      scanf("%s", nomeArquivo);
-      salvarArquivoBinario(&editorData, nomeArquivo);
+      printf("Arquivo Salvo.");
+      salvarArquivoBinario(&editorData, nomeArquivoEscrita);
       break;
     case 3:
       // Opção para adicionar uma nova pessoa na lista.

@@ -9,6 +9,6 @@ typedef struct {
   Pessoa *cabeca;
 } EditorData;
 
-void menuPrincipal();
+void menuPrincipal(int argc, char *argv[]);
 
 #endif
