@@ -30,6 +30,7 @@ void escreverDadosTexto(Pessoa *cabeca, const char *nomeArquivoTexto) {
         fprintf(stderr, "Não foi possível abrir o arquivo de texto.\n");
         return;
     }
+
     Pessoa *atual = cabeca;
     while (atual != NULL) {
         fprintf(arquivo, "%s;%s;%s\n", atual->nome, atual->cpf, atual->dataNascimento);

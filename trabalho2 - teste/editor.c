@@ -41,7 +41,7 @@ int lerArquivoBinario(EditorData *editorData, const char *nomeArquivo) {
   Pessoa pessoaTemp;
   while (fread(&pessoaTemp, sizeof(Pessoa), 1, arquivo)) {
     Pessoa *novaPessoa = criarPessoa(pessoaTemp.nome, pessoaTemp.cpf, pessoaTemp.dataNascimento);
-    adicionarPessoaFinal(&(editorData->cabeca), novaPessoa);
+    adicionarPessoaInicio(&(editorData->cabeca), novaPessoa);
   }
 
   fclose(arquivo);
@@ -65,25 +65,7 @@ int salvarArquivoBinario(EditorData *editorData, const char *nomeArquivo) {
   return 1;
 }
 
-// Formata o CPF para o formato xxx.xxx.xxx-xx.
-void formatarCPF(const char *cpf, char *cpfFormatado) {
-  sprintf(cpfFormatado, "%.3s.%.3s.%.3s-%.2s", cpf, cpf + 3, cpf + 6, cpf + 9);
-}
 
-// Imprime todos os dados da lista encadeada.
-void imprimirDados(EditorData *editorData) {
-  Pessoa *atual = editorData->cabeca;
-  while (atual != NULL) {
-    char cpfFormatado[15];
-    formatarCPF(atual->cpf, cpfFormatado);
-
-    printf("Nome: %s\n", atual->nome);
-    printf("CPF: %s\n", cpfFormatado);
-    printf("Data de Nascimento: %s\n", atual->dataNascimento);
-    printf("--------\n");
-    atual = atual->prox;
-  }
-}
 
 // Adiciona uma nova pessoa na lista encadeada de forma ordenada com base no CPF.
 void adicionarPessoaOrdenado(EditorData *editorData, const char *nome, const char *cpf, const char *dataNascimento) {
@@ -166,28 +148,16 @@ void menuPrincipal(int argc, char *argv[]) {
   do {
     // Exibe as opções do menu.
     printf("\nMenu Principal\n");
-    printf("1. Ler Arquivo Binário\n");
-    printf("2. Salvar Arquivo Binário\n");
-    printf("3. Adicionar Pessoa\n");
-    printf("4. Remover Pessoa\n");
-    printf("5. Imprimir Dados\n");
-    printf("6. Pesquisar por CPF\n");
-    printf("7. Sair\n");
+    printf("1. Adicionar pessoa na lista\n");
+    printf("2. Remover pessoa por cpf\n");
+    printf("3. Buscar Pessoa\n");
+    printf("4. Salvar e sair.\n");
     printf("Escolha uma opção: ");
     scanf("%d", &opcao);
 
     // Processa a opção escolhida pelo usuário.
     switch (opcao) {
     case 1:
-      // Opção para ler dados de um arquivo binário.
-      printf("Deprecated");
-      break;
-    case 2:
-      // Opção para salvar dados em um arquivo binário.
-      printf("Arquivo Salvo.");
-      salvarArquivoBinario(&editorData, nomeArquivoEscrita);
-      break;
-    case 3:
       // Opção para adicionar uma nova pessoa na lista.
       printf("Digite o nome: ");
       scanf("%s", nome);
@@ -197,17 +167,14 @@ void menuPrincipal(int argc, char *argv[]) {
       scanf("%s", dataNascimento);
       adicionarPessoaOrdenado(&editorData, nome, cpf, dataNascimento);
       break;
-    case 4:
+    case 2:
       // Opção para remover uma pessoa da lista com base no CPF.
       printf("Digite o CPF da pessoa a remover: ");
       scanf("%s", cpf);
       removerPessoa(&editorData, cpf);
       break;
-    case 5:
-      // Opção para imprimir todos os dados da lista.
-      imprimirDados(&editorData);
-      break;
-    case 6:
+
+    case 3:
       // Opção para pesquisar uma pessoa na lista por CPF.
       printf("Digite o CPF para buscar: ");
       scanf("%s", cpf);
@@ -219,8 +186,9 @@ void menuPrincipal(int argc, char *argv[]) {
         printf("CPF não encontrado.\n");
       }
       break;
-    case 7:
+    case 4:
       // Opção para sair do programa.
+      salvarArquivoBinario(&editorData, nomeArquivoEscrita);
       liberarEditorData(&editorData);
       printf("Saindo...\n");
       break;
@@ -228,5 +196,5 @@ void menuPrincipal(int argc, char *argv[]) {
       // Mensagem para opção inválida.
       printf("Opção inválida!\n");
     }
-  } while (opcao != 7);  // O loop continua até que a opção de saída seja escolhida.
+  } while (opcao != 4);  // O loop continua até que a opção de saída seja escolhida.
 }
